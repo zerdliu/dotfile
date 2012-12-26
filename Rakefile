@@ -5,7 +5,7 @@ task :install_dotfile do
   files.each do |file|
     puts "install #{file}"
     system %Q{rm -rf $HOME/.#{file}}
-    system %Q{cp #{file} $HOME/.#{file}}
+    system %Q{cp -r #{file} $HOME/.#{file}}
   end
  
   puts "install ssh config"
