@@ -1,0 +1,19 @@
+#!/usr/bin/expect
+              
+## usage : ./relay-ssh server user 
+## argv 0 : server
+## argv 1 : user
+set server [lindex $argv 0] 
+set user [lindex $argv 1]
+
+## login relay
+spawn ssh relay02.baidu.com -l liuzhuo
+expect "$"                             
+## ssh server
+send "ssh $server" 
+send "\n"
+## sudo user
+expect "$"
+send "sudo -iu $user"
+send "\n"
+interact
