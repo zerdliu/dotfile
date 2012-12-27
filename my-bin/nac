@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+puts "password:"
+passwd = gets.chomp
+
+system "nohup bnac -u liuzhuo -p #{passwd} & 0</dev/null &>/dev/null" 
+

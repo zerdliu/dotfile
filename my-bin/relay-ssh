@@ -5,13 +5,11 @@
 ## argv 1 : user
 set server [lindex $argv 0] 
 set user [lindex $argv 1]
-
 ## login relay
 spawn ssh relay02.baidu.com -l liuzhuo
-expect "$"                             
+interact  -o -nobuffer "$" return
 ## ssh server
-send "ssh $server" 
-send "\n"
+send "ssh $server\n" 
 ## sudo user
 expect "$"
 send "sudo -iu $user"
