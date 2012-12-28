@@ -1,0 +1,12 @@
+#!/bin/bash
+# run bnac background
+
+read -p "Please input your email passwd:" email_passwd
+read -p "input your RSA token passcode:" passcode
+
+tmux new-session -s login-relay -n nac -d 
+tmux send-keys -t login-relay 'bash' C-m
+tmux send-keys -t login-relay 'killall bnac' C-m
+tmux send-keys -t login-relay "nac $email_passwd" C-m
+tmux send-keys -t login-relay "hi dev -p $passcode" C-m 
+#tmux attach -t login-relay

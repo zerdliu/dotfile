@@ -1,7 +1,11 @@
 #!/usr/bin/env ruby
 
-puts "password:"
-passwd = gets.chomp
+passwd = ARGV[0]
+if passwd 
+else
+  puts "password:"
+  passwd = gets.chomp
+end
 
-system "nohup bnac -u liuzhuo -p #{passwd} & 0</dev/null &>/dev/null" 
+system "nohup bnac -u #{ENV['BAIDU_ACCOUNT']} -p #{passwd} 0</dev/null >/dev/null 2>&1 &" 
 

@@ -5,7 +5,7 @@ require 'net/http'
 
 server_alias = {
   :ci =>  { :server => 'ai-imci-control00.ai01', :user => 'work'    },
-  :dev => { :server => 'tc-ecomop-dev02.tc'    , :user => 'liuzhuo' },
+  :dev => { :server => 'tc-ecomop-dev02.tc'    , :user => "#{ENV['BAIDU_ACCOUNT']}" },
   :cc =>  { :server => 'db-cs-cc00.db01'       , :user => 'im'      },
   :default => { :server => ''                   , :user => ''     },
 }
@@ -16,19 +16,21 @@ global = OptionParser.new do |opts|
   opts.banner = "Usage: " + __FILE__ + "-h host -u user"
   opts.on("-s", "--server=server", String, "server name") { |v| options[:server] = v }
   opts.on("-u", "--user=user", String, "user name") { |v| options[:user] = v }
+  opts.on("-p", "--passcode=passcode", "RSA token passcode.") { |v| options[:passcode] = v }
   opts.on("-h", "--help", "Show this help message.") { puts opts; exit }
 end.parse!
 
 server = options[:server]
 user   = options[:user]  
+passcode = options[:passcode] || "wrong"
 
 server_alias[:default] = { :server => server , :user => user } 
-
-shortcut=ARGV.first || "default"
+shortcut=ARGV.first || "X"
 
 server_user = case
     when server_alias[shortcut.to_sym] then server_alias[shortcut.to_sym] 
     else server_alias[:default]
 end
 
-system("relay-ssh #{server_user[:server]} #{server_user[:user]}")
+#puts "relay-ssh #{server_user[:server]} #{server_user[:user]} #{passcode}"
+system("relay-ssh #{server_user[:server]} #{server_user[:user]} #{passcode}")
