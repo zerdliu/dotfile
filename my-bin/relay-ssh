@@ -11,7 +11,7 @@ set passcode [lindex $argv 2 ]
 spawn ssh relay02.baidu.com -l $env(BAIDU_ACCOUNT)
 
 ## passcode length is 10 , is not equal 10 , expect input PASSCODE
-if { 10 == [ llength $passcode ] } {
+if { 0 != [ llength $passcode ] } {
   expect "PASSCODE:"
   send "$passcode\n"
 }

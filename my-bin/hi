@@ -22,10 +22,10 @@ end.parse!
 
 server = options[:server]
 user   = options[:user]  
-passcode = options[:passcode] || "wrong"
+passcode = options[:passcode] 
 
 server_alias[:default] = { :server => server , :user => user } 
-shortcut=ARGV.first || "X"
+shortcut=ARGV.first || "default"
 
 server_user = case
     when server_alias[shortcut.to_sym] then server_alias[shortcut.to_sym] 
