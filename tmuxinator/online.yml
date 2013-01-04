@@ -1,0 +1,16 @@
+# ~/.tmuxinator/online.yml
+# you can make as many tabs as you wish...
+
+project_name: Tmuxinator
+project_root: ~/
+socket_name:  # Not needed.  Remove to use default socket
+rvm: 
+pre: 
+tabs:
+  - editor:
+      layout: main-vertical
+      panes:
+        - vim
+        - hi dev
+        - hi cc 
+  - shell: top
