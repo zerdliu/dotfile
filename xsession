@@ -15,9 +15,12 @@ xscreensaver -no-splash &
 # Start the system tray
 tray &
 
+# Start the dbus
+ibus-daemon -x -d & 
+
 # Start two terminals
-urxvt &
-urxvt &
+xterm &
+xterm &
 
 # Start a browser
 firefox &
