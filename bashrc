@@ -107,7 +107,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-export PATH=~/.my-bin:~/.cabal/bin:~/.xmonad/bin:$PATH
+export PATH=~/.my-bin:~/.cabal/bin:~/.xmonad/bin:~/.rvm/bin:$PATH
 
 ## git
 alias ga='git add .'
