@@ -2,3 +2,7 @@ Host *
 ControlMaster auto
 ControlPath ~/.ssh/master-%r@%h:%p
 
+Host vps
+  HostName 192.241.222.213
+  User root
+

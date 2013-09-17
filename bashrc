@@ -109,6 +109,8 @@ fi
 
 export PATH=~/.my-bin:~/.cabal/bin:~/.xmonad/bin:~/.rvm/bin:$PATH
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 ## git
 alias ga='git add .'
 alias gst='git status'
@@ -119,3 +121,12 @@ alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gb='git branch'
 alias gba='git branch -a'
+
+export PS1="\[\e[0;32m\][\e[0;32m\]\u@\e[0;31m\]\h \[\e[0;34m\]\w\e[0;32m\]] $ \[\e[0m\]"
+export LS_OPTIONS='-G'
+# Useful aliases
+alias ls='ls $LS_OPTIONS'
+alias ll='ls -al'
+alias grep='grep $LS_OPTIONS'
+alias fgrep='fgrep $LS_OPTIONS'
+alias egrep='egrep $LS_OPTIONS'
