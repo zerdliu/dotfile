@@ -1,28 +1,34 @@
 #!/usr/bin/expect
 
-## usage : ./relay-ssh server user
+## usage : ./relay-ssh server user password token
 ## argv 0 : server
 ## argv 1 : user
+## argv 2 : password
+## argv 3 : token
 
 set server [lindex $argv 0]
 set user [lindex $argv 1]
-set passcode [lindex $argv 2 ]
+set password [lindex $argv 2]
+set token [lindex $argv 3]
 
 ## login relay
-spawn ssh relay02.baidu.com -l $env(BAIDU_ACCOUNT)
+spawn ssh relay.xiaomi.com -l $user
 
-## passcode length is 10 , is not equal 10 , expect input PASSCODE
-if { 0 != [ llength $passcode ] } {
-  expect -timeout 2 "PASSCODE:"
-  send "$passcode\n"
+if { 0 != [ llength $password ] } {
+  expect -timeout 2 "password:"
+  send "$password\n"
+}
+
+if { 0 != [ llength $token ] } {
+  expect -timeout 2 "token:"
+  send "$token\n"
 }
 
 interact -o -nobuffer "$" return
 
-## ssh server
-send "ssh $server\n"
+send "shell\n"
 
 ## sudo user
-expect "$"
-send "sudo -iu $user\n"
+#expect "$"
+#send "sudo -iu $user\n"
 interact
